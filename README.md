@@ -30,6 +30,53 @@ STEP-5: Combine all these groups to get the complete cipher text.
 
 ## PROGRAM 
 
+```
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int key[3][3], plain[3], cipher[3];
+    char text[100];
+    int i, j;
+
+    printf("Enter the 3x3 key matrix (9 integers):\n");
+    for(i = 0; i < 3; i++)
+        for(j = 0; j < 3; j++)
+            scanf("%d", &key[i][j]);
+
+    printf("Enter plaintext (3 letters): ");
+    scanf("%s", text);
+
+    // Convert plaintext to numbers (A=0, B=1, ..., Z=25)
+    for(i = 0; i < 3; i++)
+        plain[i] = text[i] - 'A';
+
+    // Encryption
+    for(i = 0; i < 3; i++)
+    {
+        cipher[i] = 0;
+        for(j = 0; j < 3; j++)
+            cipher[i] += key[i][j] * plain[j];
+
+        cipher[i] = cipher[i] % 26;
+    }
+
+    printf("Cipher Text: ");
+    for(i = 0; i < 3; i++)
+        printf("%c", cipher[i] + 'A');
+
+    printf("\n");
+
+    return 0;
+}
+```
+
+
 ## OUTPUT
 
+<img width="397" height="282" alt="image" src="https://github.com/user-attachments/assets/f77cc3dc-5bd2-4ccb-967e-e285884d0725" />
+
 ## RESULT
+
+Thus the program excecuted successfully.
